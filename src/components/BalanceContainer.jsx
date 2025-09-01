@@ -4,11 +4,11 @@ const BalanceContainer = (props) => {
     const { transactions } = props
     const [income, setIncome] = useState(0)
     const [expense, setExpense] = useState(0)
-    const [balance,setBalance] =useState(0)
+    const [balance, setBalance] = useState(0)
     useEffect(() => {
-        let inc = 0 
+        let inc = 0
         let exp = 0
-        
+
         transactions.forEach((txn) => {
             if (txn.amount < 0) {
                 exp += Number(txn.amount)

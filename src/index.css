@@ -46,70 +46,83 @@ body {
 .expense-item.positive .amount {
   color: #28a745;
 }
-.expense-form{
+
+.expense-form {
   border: 1px solid #d4d4d4;
   border-radius: 5px;
   padding: 10px;
 }
-.expense-form h4{
+
+.expense-form h4 {
   margin-top: 0px;
   margin-bottom: 10px;
 }
-.expense-form input{
-  display:block;
+
+.expense-form input {
+  display: block;
   width: 100%;
   padding: 8px 10px;
   box-sizing: border-box;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
-.expense-form button{
+
+.expense-form button {
   display: block;
-  width:100%;
+  width: 100%;
   border: none;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
-  background-color:#c90ab9;
-  color:#ffffff;
+  background-color: #c90ab9;
+  color: #ffffff;
 }
-.balance-container{
+
+.balance-container {
   padding: 10px;
   background-color: #c90ab9;
-  border-radius :5px;
+  border-radius: 5px;
   display: flex;
   justify-content: space-evenly;
 }
-.currency-item{
+
+.currency-item {
   padding: 10px;
-  background-color:#ffaff88b;
+  background-color: #ffaff88b;
   border-radius: 5px;
   color: #ffffff;
   width: 30%;
   box-sizing: border-box;
 }
-.currency-item .title{
+
+.currency-item .title {
   text-transform: uppercase;
   font-size: 11px;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: center;
 }
-.currency-item .amount{
+
+.currency-item .amount {
   text-align: center;
 }
-.amount.green{
+
+.amount.green {
   color: #2ff45c
 }
-.amount.red{
+
+.amount.red {
   color: #dc3545;
 }
-.expense-item{
+
+.expense-item {
   position: relative;
 }
-.btn-container{
+
+.btn-container {
   position: absolute;
   top: 0;
-  bottom:0;
+  bottom: 0;
   left: 0;
   right: 0;
   background-color: #ffffff92;
@@ -119,22 +132,26 @@ body {
   opacity: 0;
   border-radius: 5px;
 }
-.expense-item:hover .btn-container{
+
+.expense-item:hover .btn-container {
   opacity: 1;
 }
-.btn-container .delete-btn{
+
+.btn-container .delete-btn {
   border-radius: 5px;
-  border:none;
-  background-color:red;
+  border: none;
+  background-color: red;
   color: #ffffff;
   cursor: pointer;
 }
-.edit-btn{
+
+.edit-btn {
   border-radius: 5px;
-  border:none;
-  width:50px;
-  background-color:orange;
+  border: none;
+  width: 50px;
+  background-color: orange;
   color: #ffffff;
   cursor: pointer;
   text-align: center;
+  margin-left: 10px;
 }

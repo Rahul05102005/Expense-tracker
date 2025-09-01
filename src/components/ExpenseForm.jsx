@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { toast } from "react-toastify";  
+import { toast } from "react-toastify";
 import { useEffect } from "react";
 
 const ExpenseForm = (props) => {
-    const { addExpense, editItem ,updateExpense,setEditItem} = props;
+    const { addExpense, editItem, updateExpense, setEditItem } = props;
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     useEffect(() => {
@@ -21,11 +21,13 @@ const ExpenseForm = (props) => {
         e.preventDefault();
         if (title && amount) {
             if (editItem) {
-                updateExpense(editItem.id, title, amount)
+                updateExpense(editItem._id, title, amount)
                 setEditItem(null)
             }
             else {
                 addExpense(title, amount);
+                setTitle("")
+                setAmount("")
             }
         }
         else if (!title && !amount) {
