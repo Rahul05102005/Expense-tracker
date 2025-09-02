@@ -25,7 +25,7 @@ const Container = () => {
 
     //to store data in db
     const addExpense = async (title, amount) => {
-        await fetch("http://localhost:3000/addExpense", {
+        await fetch("https://expense-backend-nprv.onrender.com/addExpense", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ title, amount })
@@ -39,14 +39,14 @@ const Container = () => {
     }, [])
 
     const getAllExpense = async () => {
-        const response = await fetch("http://localhost:3000/getExpense")
+        const response = await fetch("https://expense-backend-nprv.onrender.com/getExpense")
         const data = await response.json()
         setTransactions(data);
 
     }
 
     const deleteExpense = async (id) => {
-        await fetch("http://localhost:3000/deleteExpense", {
+        await fetch("https://expense-backend-nprv.onrender.com/deleteExpense", {
             method: "DELETE",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ id })
@@ -59,7 +59,7 @@ const Container = () => {
         setEditItem(item)
     }
     const updateExpense = async (id, title, amount) => {
-        await fetch("http://localhost:3000/editExpense", {
+        await fetch("https://expense-backend-nprv.onrender.com/editExpense", {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ id, title, amount })
