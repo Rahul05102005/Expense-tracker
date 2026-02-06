@@ -1,0 +1,96 @@
+Restaurant backend
+
+
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect("mongodb://127.0.0.1:27017/restaurantDB")
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.log(err));
+
+const aboutSchema = new mongoose.Schema({
+    content: { type: String, required: true },
+    date: { type: Date, default: Date.now }
+});
+const About = mongoose.model("About", aboutSchema);
+
+const contactSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    message: { type: String, required: true },
+    date: { type: Date, default: Date.now }
+});
+const Contact = mongoose.model("Contact", contactSchema);
+
+const menuItemSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    price: { type: Number, required: true },
+    image: { type: String }
+});
+const MenuItem = mongoose.model("MenuItem", menuItemSchema);
+
+app.post("/addAbout", async (req, res) => {
+    try {
+        const newAbout = new About(req.body);
+        await newAbout.save();
+        res.status(201).send("About info added");
+    } catch {
+        res.status(500).send("Error in adding about info");
+    }
+});
+
+app.get("/getAbout", async (req, res) => {
+    try {
+        const aboutData = await About.find();
+        res.send(aboutData);
+    } catch {
+        res.status(500).send("Error in getting about info");
+    }
+});
+
+app.post("/addContact", async (req, res) => {
+    try {
+        const newContact = new Contact(req.body);
+        await newContact.save();
+        res.status(201).send("Contact message saved");
+    } catch {
+        res.status(500).send("Error in saving contact");
+    }
+});
+
+app.get("/getContact", async (req, res) => {
+    try {
+        const contacts = await Contact.find();
+        res.send(contacts);
+    } catch {
+        res.status(500).send("Error in getting contacts");
+    }
+});
+
+app.post("/addMenu", async (req, res) => {
+    try {
+        const newMenu = new MenuItem(req.body);
+        await newMenu.save();
+        res.status(201).send("Menu item added");
+    } catch {
+        res.status(500).send("Error in adding menu item");
+    }
+});
+
+app.get("/getMenu", async (req, res) => {
+    try {
+        const menuItems = await MenuItem.find();
+        res.send(menuItems);
+    } catch {
+        res.status(500).send("Error in getting menu");
+    }
+});
+
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
